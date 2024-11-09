@@ -1,0 +1,62 @@
+2024-11-07 23:00:19:484 grammar LogManager.java:25 before: (COMBINED_GRAMMAR JavaScript (RULES (RULE program (BLOCK (ALT (* (BLOCK (ALT statement)))))) (RULE statement (BLOCK (ALT declaration) (ALT functionDeclaration) (ALT expressionStatement) (ALT printStatement) (ALT blockStatement))) (RULE declaration (BLOCK (ALT 'let' variableAssignment) (ALT 'const' variableAssignment))) (RULE variableAssignment (BLOCK (ALT IDENTIFIER '=' expression))) (RULE functionDeclaration (BLOCK (ALT 'let' IDENTIFIER '=' functionExpression))) (RULE functionExpression (BLOCK (ALT '(' (? (BLOCK (ALT formalParameters))) ')' '=>' blockStatement))) (RULE formalParameters (BLOCK (ALT IDENTIFIER (* (BLOCK (ALT ',' IDENTIFIER)))))) (RULE expressionStatement (BLOCK (ALT expression))) (RULE printStatement (BLOCK (ALT 'print' '(' expression ')'))) (RULE blockStatement (BLOCK (ALT '{' (* (BLOCK (ALT statement))) '}'))) (RULE expression (BLOCK (ALT binaryOperation) (ALT STRING_LITERAL) (ALT NUMBER) (ALT IDENTIFIER) (ALT lambdaExpression) (ALT listExpression) (ALT callExpression))) (RULE binaryOperation (BLOCK (ALT multiplicativeExpression (* (BLOCK (ALT (BLOCK (ALT '+') (ALT '-')) multiplicativeExpression)))))) (RULE multiplicativeExpression (BLOCK (ALT unaryExpression (* (BLOCK (ALT (BLOCK (ALT '*') (ALT '/') (ALT '%')) unaryExpression)))))) (RULE unaryExpression (BLOCK (ALT '-' unaryExpression) (ALT '+' unaryExpression) (ALT IDENTIFIER) (ALT NUMBER) (ALT STRING_LITERAL) (ALT callExpression) (ALT listExpression))) (RULE lambdaExpression (BLOCK (ALT 'let' IDENTIFIER '=' functionExpression))) (RULE listExpression (BLOCK (ALT '[' (? (BLOCK (ALT expression (* (BLOCK (ALT ',' expression)))))) ']'))) (RULE callExpression (BLOCK (ALT IDENTIFIER '(' (? (BLOCK (ALT expression (* (BLOCK (ALT ',' expression)))))) ')'))) (RULE IDENTIFIER (BLOCK (ALT [a-zA-Z_] (* (BLOCK (ALT [a-zA-Z0-9_])))))) (RULE NUMBER (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE STRING_LITERAL (BLOCK (ALT '"' (* (BLOCK (ALT (~ (SET ["\\]))) (ALT '\\' .))) '"'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip)))))
+2024-11-07 23:00:19:503 grammar LogManager.java:25 after: (COMBINED_GRAMMAR JavaScript (RULES (RULE program (BLOCK (ALT (* (BLOCK (ALT statement)))))) (RULE statement (BLOCK (ALT declaration) (ALT functionDeclaration) (ALT expressionStatement) (ALT printStatement) (ALT blockStatement))) (RULE declaration (BLOCK (ALT 'let' variableAssignment) (ALT 'const' variableAssignment))) (RULE variableAssignment (BLOCK (ALT IDENTIFIER '=' expression))) (RULE functionDeclaration (BLOCK (ALT 'let' IDENTIFIER '=' functionExpression))) (RULE functionExpression (BLOCK (ALT '(' (? (BLOCK (ALT formalParameters))) ')' '=>' blockStatement))) (RULE formalParameters (BLOCK (ALT IDENTIFIER (* (BLOCK (ALT ',' IDENTIFIER)))))) (RULE expressionStatement (BLOCK (ALT expression))) (RULE printStatement (BLOCK (ALT 'print' '(' expression ')'))) (RULE blockStatement (BLOCK (ALT '{' (* (BLOCK (ALT statement))) '}'))) (RULE expression (BLOCK (ALT binaryOperation) (ALT STRING_LITERAL) (ALT NUMBER) (ALT IDENTIFIER) (ALT lambdaExpression) (ALT listExpression) (ALT callExpression))) (RULE binaryOperation (BLOCK (ALT multiplicativeExpression (* (BLOCK (ALT (SET '+' '-') multiplicativeExpression)))))) (RULE multiplicativeExpression (BLOCK (ALT unaryExpression (* (BLOCK (ALT (SET '*' '/' '%') unaryExpression)))))) (RULE unaryExpression (BLOCK (ALT '-' unaryExpression) (ALT '+' unaryExpression) (ALT IDENTIFIER) (ALT NUMBER) (ALT STRING_LITERAL) (ALT callExpression) (ALT listExpression))) (RULE lambdaExpression (BLOCK (ALT 'let' IDENTIFIER '=' functionExpression))) (RULE listExpression (BLOCK (ALT '[' (? (BLOCK (ALT expression (* (BLOCK (ALT ',' expression)))))) ']'))) (RULE callExpression (BLOCK (ALT IDENTIFIER '(' (? (BLOCK (ALT expression (* (BLOCK (ALT ',' expression)))))) ')'))) (RULE IDENTIFIER (BLOCK (ALT [a-zA-Z_] (* (BLOCK (ALT [a-zA-Z0-9_])))))) (RULE NUMBER (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE STRING_LITERAL (BLOCK (ALT '"' (* (BLOCK (ALT (~ (SET ["\\]))) (ALT '\\' .))) '"'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip)))))
+2024-11-07 23:00:19:532 grammar LogManager.java:25 after extract implicit lexer =(COMBINED_GRAMMAR JavaScript (RULES (RULE program (BLOCK (ALT (* (BLOCK (ALT statement)))))) (RULE statement (BLOCK (ALT declaration) (ALT functionDeclaration) (ALT expressionStatement) (ALT printStatement) (ALT blockStatement))) (RULE declaration (BLOCK (ALT 'let' variableAssignment) (ALT 'const' variableAssignment))) (RULE variableAssignment (BLOCK (ALT IDENTIFIER '=' expression))) (RULE functionDeclaration (BLOCK (ALT 'let' IDENTIFIER '=' functionExpression))) (RULE functionExpression (BLOCK (ALT '(' (? (BLOCK (ALT formalParameters))) ')' '=>' blockStatement))) (RULE formalParameters (BLOCK (ALT IDENTIFIER (* (BLOCK (ALT ',' IDENTIFIER)))))) (RULE expressionStatement (BLOCK (ALT expression))) (RULE printStatement (BLOCK (ALT 'print' '(' expression ')'))) (RULE blockStatement (BLOCK (ALT '{' (* (BLOCK (ALT statement))) '}'))) (RULE expression (BLOCK (ALT binaryOperation) (ALT STRING_LITERAL) (ALT NUMBER) (ALT IDENTIFIER) (ALT lambdaExpression) (ALT listExpression) (ALT callExpression))) (RULE binaryOperation (BLOCK (ALT multiplicativeExpression (* (BLOCK (ALT (SET '+' '-') multiplicativeExpression)))))) (RULE multiplicativeExpression (BLOCK (ALT unaryExpression (* (BLOCK (ALT (SET '*' '/' '%') unaryExpression)))))) (RULE unaryExpression (BLOCK (ALT '-' unaryExpression) (ALT '+' unaryExpression) (ALT IDENTIFIER) (ALT NUMBER) (ALT STRING_LITERAL) (ALT callExpression) (ALT listExpression))) (RULE lambdaExpression (BLOCK (ALT 'let' IDENTIFIER '=' functionExpression))) (RULE listExpression (BLOCK (ALT '[' (? (BLOCK (ALT expression (* (BLOCK (ALT ',' expression)))))) ']'))) (RULE callExpression (BLOCK (ALT IDENTIFIER '(' (? (BLOCK (ALT expression (* (BLOCK (ALT ',' expression)))))) ')')))))
+2024-11-07 23:00:19:532 grammar LogManager.java:25 lexer =(LEXER_GRAMMAR JavaScriptLexer (RULES (RULE T__0 (BLOCK (ALT 'let'))) (RULE T__1 (BLOCK (ALT 'const'))) (RULE T__2 (BLOCK (ALT '='))) (RULE T__3 (BLOCK (ALT '('))) (RULE T__4 (BLOCK (ALT ')'))) (RULE T__5 (BLOCK (ALT '=>'))) (RULE T__6 (BLOCK (ALT ','))) (RULE T__7 (BLOCK (ALT 'print'))) (RULE T__8 (BLOCK (ALT '{'))) (RULE T__9 (BLOCK (ALT '}'))) (RULE T__10 (BLOCK (ALT '+'))) (RULE T__11 (BLOCK (ALT '-'))) (RULE T__12 (BLOCK (ALT '*'))) (RULE T__13 (BLOCK (ALT '/'))) (RULE T__14 (BLOCK (ALT '%'))) (RULE T__15 (BLOCK (ALT '['))) (RULE T__16 (BLOCK (ALT ']'))) (RULE IDENTIFIER (BLOCK (ALT [a-zA-Z_] (* (BLOCK (ALT [a-zA-Z0-9_])))))) (RULE NUMBER (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE STRING_LITERAL (BLOCK (ALT '"' (* (BLOCK (ALT (~ (SET ["\\]))) (ALT '\\' .))) '"'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip)))))
+2024-11-07 23:00:19:771 semantics LogManager.java:25 tokens={EOF=-1, T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, IDENTIFIER=18, NUMBER=19, STRING_LITERAL=20, WS=21}
+2024-11-07 23:00:19:771 semantics LogManager.java:25 strings={'let'=1, 'const'=2, '='=3, '('=4, ')'=5, '=>'=6, ','=7, 'print'=8, '{'=9, '}'=10, '+'=11, '-'=12, '*'=13, '/'=14, '%'=15, '['=16, ']'=17}
+2024-11-07 23:00:19:791 LL1 LogManager.java:25 
+DECISION 0 in rule program
+2024-11-07 23:00:19:792 LL1 LogManager.java:25 look=[{1..2, 8..9, 11..12, 16, 18..20}, <EOF>]
+2024-11-07 23:00:19:792 LL1 LogManager.java:25 LL(1)? true
+2024-11-07 23:00:19:792 LL1 LogManager.java:25 
+DECISION 1 in rule statement
+2024-11-07 23:00:19:792 LL1 LogManager.java:25 look=[{1..2}, 1, {1, 11..12, 16, 18..20}, 8, 9]
+2024-11-07 23:00:19:793 LL1 LogManager.java:25 LL(1)? false
+2024-11-07 23:00:19:793 LL1 LogManager.java:25 
+DECISION 2 in rule declaration
+2024-11-07 23:00:19:793 LL1 LogManager.java:25 look=[1, 2]
+2024-11-07 23:00:19:793 LL1 LogManager.java:25 LL(1)? true
+2024-11-07 23:00:19:793 LL1 LogManager.java:25 
+DECISION 3 in rule functionExpression
+2024-11-07 23:00:19:793 LL1 LogManager.java:25 look=[18, 5]
+2024-11-07 23:00:19:793 LL1 LogManager.java:25 LL(1)? true
+2024-11-07 23:00:19:793 LL1 LogManager.java:25 
+DECISION 4 in rule formalParameters
+2024-11-07 23:00:19:793 LL1 LogManager.java:25 look=[7, 5]
+2024-11-07 23:00:19:793 LL1 LogManager.java:25 LL(1)? true
+2024-11-07 23:00:19:793 LL1 LogManager.java:25 
+DECISION 5 in rule blockStatement
+2024-11-07 23:00:19:794 LL1 LogManager.java:25 look=[{1..2, 8..9, 11..12, 16, 18..20}, 10]
+2024-11-07 23:00:19:794 LL1 LogManager.java:25 LL(1)? true
+2024-11-07 23:00:19:794 LL1 LogManager.java:25 
+DECISION 6 in rule expression
+2024-11-07 23:00:19:794 LL1 LogManager.java:25 look=[{11..12, 16, 18..20}, 20, 19, 18, 1, 16, 18]
+2024-11-07 23:00:19:794 LL1 LogManager.java:25 LL(1)? false
+2024-11-07 23:00:19:794 LL1 LogManager.java:25 
+DECISION 7 in rule binaryOperation
+2024-11-07 23:00:19:795 LL1 LogManager.java:25 look=[{11..12}, {<EOF>, 1..2, 5, 7..12, 16..20}]
+2024-11-07 23:00:19:795 LL1 LogManager.java:25 LL(1)? false
+2024-11-07 23:00:19:795 LL1 LogManager.java:25 
+DECISION 8 in rule multiplicativeExpression
+2024-11-07 23:00:19:796 LL1 LogManager.java:25 look=[{13..15}, {<EOF>, 1..2, 5, 7..12, 16..20}]
+2024-11-07 23:00:19:796 LL1 LogManager.java:25 LL(1)? true
+2024-11-07 23:00:19:796 LL1 LogManager.java:25 
+DECISION 9 in rule unaryExpression
+2024-11-07 23:00:19:796 LL1 LogManager.java:25 look=[12, 11, 18, 19, 20, 18, 16]
+2024-11-07 23:00:19:796 LL1 LogManager.java:25 LL(1)? false
+2024-11-07 23:00:19:796 LL1 LogManager.java:25 
+DECISION 10 in rule listExpression
+2024-11-07 23:00:19:797 LL1 LogManager.java:25 look=[7, 17]
+2024-11-07 23:00:19:797 LL1 LogManager.java:25 LL(1)? true
+2024-11-07 23:00:19:797 LL1 LogManager.java:25 
+DECISION 11 in rule listExpression
+2024-11-07 23:00:19:797 LL1 LogManager.java:25 look=[{1, 11..12, 16, 18..20}, 17]
+2024-11-07 23:00:19:797 LL1 LogManager.java:25 LL(1)? true
+2024-11-07 23:00:19:797 LL1 LogManager.java:25 
+DECISION 12 in rule callExpression
+2024-11-07 23:00:19:797 LL1 LogManager.java:25 look=[7, 5]
+2024-11-07 23:00:19:797 LL1 LogManager.java:25 LL(1)? true
+2024-11-07 23:00:19:797 LL1 LogManager.java:25 
+DECISION 13 in rule callExpression
+2024-11-07 23:00:19:798 LL1 LogManager.java:25 look=[{1, 11..12, 16, 18..20}, 5]
+2024-11-07 23:00:19:798 LL1 LogManager.java:25 LL(1)? true
