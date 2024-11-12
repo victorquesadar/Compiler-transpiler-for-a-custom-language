@@ -1,2 +1,6 @@
-if (2<2) then {let a=1} else {let b=2}
+let n = 3
+if (n == 3) then {
+	let a=1+1
+
+} else {let c=3}
 
