@@ -1,2 +1,2 @@
-let version = 666 - 664
+if (2<2) then {let a=1} else {let b=2}
 

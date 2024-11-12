@@ -9,6 +9,11 @@ statement
     | expressionStatement
     | printStatement
     | blockStatement
+    | ifBlockStatement
+    | elseBlockStatement
+    | ifThenElseStatement
+    | ifThenStatement
+    | whileStatement
     ;
 
 declaration
@@ -42,6 +47,26 @@ printStatement
 
 blockStatement
     : '{' statement* '}'
+    ;
+
+ifBlockStatement
+    : '{' statement* '}'
+    ;
+
+elseBlockStatement
+    : '{' statement* '}'
+    ;
+
+ifThenElseStatement
+    : 'if' '('expression')' 'then' ifBlockStatement 'else' elseBlockStatement
+    ;
+
+ifThenStatement
+    : 'if' '('expression')' 'then' ifBlockStatement 
+    ;
+
+whileStatement
+    : 'while' '(' expression ')' blockStatement
     ;
 
 // Simplified expression rule with all operations in one place

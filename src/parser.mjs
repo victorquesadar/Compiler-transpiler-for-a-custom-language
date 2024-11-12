@@ -2,10 +2,11 @@
 import JavaScriptVisitor from "../parser/JavaScriptVisitor.js";
 
 class ASTNode {
-  constructor(type, value = null, children = []) {
+  constructor(type, value = null, children = [], weight = 1) {
     this.type = type;
     this.value = value;
     this.children = Array.isArray(children) ? children : [children];
+    this.weight = 1;
   }
 }
 
@@ -79,7 +80,28 @@ class MyVisitor extends JavaScriptVisitor {
   visitListExpression(ctx) {
     return new ASTNode("LIST", ctx.getText());
   } 
-  compareExpr
+  visitIfThenElseStatement(ctx) {
+    const condition = this.visit(ctx.expression(0));
+    const thenBranch = this.visit(ctx.ifBlockStatement(0));
+    const elseBranch = this.visit(ctx.elseBlockStatement(1)) ;
+    return new ASTNode("IF_THEN_ELSE", null, [condition, thenBranch, elseBranch]);
+  }
+
+  visitIfBlockStatement(ctx) {
+    const statements = ctx.statement().map(statement => this.visit(statement));
+  
+    return new ASTNode("blockStatement", null, statements);
+  }
+
+
+
+  visitIfThenStatement(ctx) {
+    const condition = this.visit(ctx.expression(0));
+    const thenBranch = this.visit(ctx.blockStatement(0));
+    
+    return new ASTNode("IF_THEN", null, [condition, thenBranch]);
+  }
+  
   visitCompareExpr(ctx) {
     const left = this.visit(ctx.expression(0));
     const right = this.visit(ctx.expression(1));

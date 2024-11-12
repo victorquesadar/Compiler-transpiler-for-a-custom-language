@@ -1,6 +1,7 @@
 let frameCount = 0;
 let variable=0; 
 let variableCount = [];
+let ifCount = 0;  
 
 class Identifier {
   constructor(label, value = null) {
@@ -59,11 +60,25 @@ function printPostOrder(node) {
     console.log('LDV',node.value);
 
   }   else if(node.type === 'LIST'){
-    console.log('LDV',node.value);
+    console.log('LDV', node.value);
+    }
+    else if (node.type === 'COMPARE') {
+    if (node.type === 'IF_THEN_ELSE') {
+      console.log('BTT', node.value);
+    } else {
+      console.log(node.value);
+    }
+    }
+    else if(node.type === 'blockStatement'){
+    ifCount=0;
+    console.log('BT ',node.value);
+    ifCount+=node.weight;
+    console.log(ifCount);
   }
-  else if(node.type === 'COMPARE'){
-    console.log(node.value);
-
+  else if(node.type === 'IF_THEN_ELSE'){
+ 
+    console.log('BF ',node.value);
+  
   }
   else if (node.type === 'ADD') {
     console.log('ADD');
@@ -74,5 +89,7 @@ function printPostOrder(node) {
   } else if (node.type === 'DIV') {
     console.log('DIV');
 }
+
 }
+
 export { printPostOrder };
