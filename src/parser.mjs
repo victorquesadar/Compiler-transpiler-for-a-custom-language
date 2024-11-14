@@ -107,7 +107,7 @@ class MyVisitor extends JavaScriptVisitor {
 		}
 
 	
-		condition.weight = countLeafNodes(thenBranch);
+		condition.weight = (countLeafNodes(thenBranch))+1;        //para que no caiga en el bt y se salte el else
 		thenBranch.weight = countLeafNodes(elseBranch);
 		return new ASTNode("IF_THEN_ELSE", null, [condition, thenBranch, elseBranch]);
 	}
@@ -129,6 +129,18 @@ class MyVisitor extends JavaScriptVisitor {
 
 		return new ASTNode("IF_THEN", null, [condition, thenBranch]);
 	}
+
+  visitFunctionDeclaration(ctx) {
+    const functionName = ctx.IDENTIFIER().getText();
+    const functionBody = this.visit(ctx.functionExpression());
+    return new ASTNode("FUNCTION_DECLARATION", { name: functionName }, functionBody);
+  }
+
+  visitCallExpression(ctx) {
+    const functionName = ctx.IDENTIFIER().getText();
+    const args = ctx.expression().map(arg => this.visit(arg));
+    return new ASTNode("CALL", { name: functionName }, args);
+  }
 
 	visitCompareExpr(ctx) {
 		const left = this.visit(ctx.expression(0));

@@ -14,6 +14,7 @@ statement
     | ifThenElseStatement
     | ifThenStatement
     | whileStatement
+    
     ;
 
 declaration
@@ -82,6 +83,7 @@ expression
     | listExpression                                   # listExpr
     | callExpression                                   # callExpr
     | lambdaExpression                                 # lambdaExpr
+    | variableAssignment                                # variableAssig
     ;
 
 lambdaExpression

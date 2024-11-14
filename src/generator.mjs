@@ -2,12 +2,15 @@ let frameCount = 0;
 let variable = 0;
 let variableCount = [];
 let ifCount = 0;
+let functionCount = 0;
+
+
 
 class Identifier {
 	constructor(label, value = null) {
 		this.label = label;
 		this.value = value;
-
+		this.variableList = [];
 	}
 }
 
@@ -19,11 +22,27 @@ function printPostOrder(node) {
 		node.forEach(printPostOrder);
 		return;
 	}
+	if (node.type === 'FUNCTION_DECLARATION') {
+		let existingIdentifier = null;
+		
+			existingIdentifier = variableCount.find(ident => ident.label === node.value.name);
+	
+		if (!existingIdentifier) {
+			frameCount++;
+			const identy = new Identifier(node.value.name, frameCount);
+			variableCount.push(identy);
+			console.log('$FUN', '$'+String(identy.value));
+		} else {
+			console.error('Error: node.name is undefined');
+		}
+
+	}
 
 	// Recorre primero los hijos del nodo
 	if (node.children && node.children.length > 0) {
 		node.children.forEach(printPostOrder);
 	}
+
 
 	// Imprime dependiendo del tipo de nodo
 	if (node.type === 'NUMBER') {
@@ -34,26 +53,38 @@ function printPostOrder(node) {
 			node.value.children.forEach(printPostOrder);
 		}
 	}
-
+		//REPARAR
 	else if (node.type === 'IDENTIFIER') {
 
-		const existingIdentifier = variableCount.find(ident => ident.label === node.value.name);
+		const existingIdentifier = variableCount[0].variableList.find(ident => ident.label === node.value.name);
 		console.log("BLD", frameCount, existingIdentifier.value);
 
 	} else if (node.type === 'LET') {
-
-
-		const existingIdentifier = variableCount.find(ident => ident.label === node.value.name);
+		
+		const existingIdentifier = variableCount[0].variableList.find(ident => ident.label === node.value.name);
 		if (!existingIdentifier) {
 			const identy = new Identifier(node.value.name, variable);
-			variableCount.push(identy);
+			variableCount[0].variableList.push(identy);
 			variable++;
-			console.log('BST', frameCount, identy.value);
+			
+			console.log('BST',0 , identy.value);
 		} else {
 			console.error('Error: node.name is undefined');
 		}
 
-	} else if (node.type === 'INT') {
+	} 
+	else if (node.type === 'CALL') {
+		let existingIdentifier = null;
+		existingIdentifier = variableCount.find(ident => ident.label === node.value.name)
+		if (existingIdentifier) {
+		console.log("LDF",  '$'+String(existingIdentifier.value));
+		console.log("APP");
+		} else {
+			console.error('Error: node.name is undefined');
+		}
+	}
+	
+	else if (node.type === 'INT') {
 		console.log('LDV', node.value);
 
 	} else if (node.type === 'STR') {
@@ -74,15 +105,10 @@ function printPostOrder(node) {
 		}
 	}
 	else if (node.type === 'blockStatement') {
-
 		console.log('BT', node.weight);
-
-
 	}
 	else if (node.type === 'IF_THEN') {
-
 		ifCount = 0;
-
 	}
 	else if (node.type === 'ADD') {
 		console.log('ADD');
@@ -94,6 +120,13 @@ function printPostOrder(node) {
 		console.log('DIV');
 	}
 
+	else if (node.type === 'FUNCTION_DECLARATION') {
+		const identy = new Identifier(node.value.name, frameCount);
+			
+			console.log('$END', '$'+String(identy.value));
+			
+
+	}
 
 }
 
