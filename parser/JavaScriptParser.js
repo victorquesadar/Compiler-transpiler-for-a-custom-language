@@ -3,70 +3,73 @@
 import antlr4 from 'antlr4';
 import JavaScriptVisitor from './JavaScriptVisitor.js';
 
-const serializedATN = [4,1,30,206,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,30,217,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
-2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,1,0,5,0,40,8,
-0,10,0,12,0,43,9,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,55,8,1,1,
-2,1,2,1,2,1,2,3,2,61,8,2,1,3,1,3,1,3,1,3,1,4,1,4,1,4,1,4,1,4,1,5,1,5,3,5,
-74,8,5,1,5,1,5,1,5,1,5,1,6,1,6,1,6,5,6,83,8,6,10,6,12,6,86,9,6,1,7,1,7,1,
-8,1,8,1,8,1,8,1,8,1,9,1,9,5,9,97,8,9,10,9,12,9,100,9,9,1,9,1,9,1,10,1,10,
-5,10,106,8,10,10,10,12,10,109,9,10,1,10,1,10,1,11,1,11,5,11,115,8,11,10,
-11,12,11,118,9,11,1,11,1,11,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,
-1,13,1,13,1,13,1,13,1,13,1,13,1,13,1,14,1,14,1,14,1,14,1,14,1,14,1,15,1,
-15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,3,15,158,
-8,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,5,15,169,8,15,10,15,12,
-15,172,9,15,1,16,1,16,1,16,1,16,1,16,1,17,1,17,1,17,1,17,5,17,183,8,17,10,
-17,12,17,186,9,17,3,17,188,8,17,1,17,1,17,1,18,1,18,1,18,1,18,1,18,5,18,
-197,8,18,10,18,12,18,200,9,18,3,18,202,8,18,1,18,1,18,1,18,0,1,30,19,0,2,
-4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,0,3,1,0,18,19,1,0,15,17,
-1,0,20,24,217,0,41,1,0,0,0,2,54,1,0,0,0,4,60,1,0,0,0,6,62,1,0,0,0,8,66,1,
-0,0,0,10,71,1,0,0,0,12,79,1,0,0,0,14,87,1,0,0,0,16,89,1,0,0,0,18,94,1,0,
-0,0,20,103,1,0,0,0,22,112,1,0,0,0,24,121,1,0,0,0,26,130,1,0,0,0,28,137,1,
-0,0,0,30,157,1,0,0,0,32,173,1,0,0,0,34,178,1,0,0,0,36,191,1,0,0,0,38,40,
-3,2,1,0,39,38,1,0,0,0,40,43,1,0,0,0,41,39,1,0,0,0,41,42,1,0,0,0,42,1,1,0,
-0,0,43,41,1,0,0,0,44,55,3,4,2,0,45,55,3,8,4,0,46,55,3,14,7,0,47,55,3,16,
-8,0,48,55,3,18,9,0,49,55,3,20,10,0,50,55,3,22,11,0,51,55,3,24,12,0,52,55,
-3,26,13,0,53,55,3,28,14,0,54,44,1,0,0,0,54,45,1,0,0,0,54,46,1,0,0,0,54,47,
-1,0,0,0,54,48,1,0,0,0,54,49,1,0,0,0,54,50,1,0,0,0,54,51,1,0,0,0,54,52,1,
-0,0,0,54,53,1,0,0,0,55,3,1,0,0,0,56,57,5,1,0,0,57,61,3,6,3,0,58,59,5,2,0,
-0,59,61,3,6,3,0,60,56,1,0,0,0,60,58,1,0,0,0,61,5,1,0,0,0,62,63,5,27,0,0,
-63,64,5,3,0,0,64,65,3,30,15,0,65,7,1,0,0,0,66,67,5,1,0,0,67,68,5,27,0,0,
-68,69,5,3,0,0,69,70,3,10,5,0,70,9,1,0,0,0,71,73,5,4,0,0,72,74,3,12,6,0,73,
-72,1,0,0,0,73,74,1,0,0,0,74,75,1,0,0,0,75,76,5,5,0,0,76,77,5,6,0,0,77,78,
-3,18,9,0,78,11,1,0,0,0,79,84,5,27,0,0,80,81,5,7,0,0,81,83,5,27,0,0,82,80,
-1,0,0,0,83,86,1,0,0,0,84,82,1,0,0,0,84,85,1,0,0,0,85,13,1,0,0,0,86,84,1,
-0,0,0,87,88,3,30,15,0,88,15,1,0,0,0,89,90,5,8,0,0,90,91,5,4,0,0,91,92,3,
-30,15,0,92,93,5,5,0,0,93,17,1,0,0,0,94,98,5,9,0,0,95,97,3,2,1,0,96,95,1,
-0,0,0,97,100,1,0,0,0,98,96,1,0,0,0,98,99,1,0,0,0,99,101,1,0,0,0,100,98,1,
-0,0,0,101,102,5,10,0,0,102,19,1,0,0,0,103,107,5,9,0,0,104,106,3,2,1,0,105,
-104,1,0,0,0,106,109,1,0,0,0,107,105,1,0,0,0,107,108,1,0,0,0,108,110,1,0,
-0,0,109,107,1,0,0,0,110,111,5,10,0,0,111,21,1,0,0,0,112,116,5,9,0,0,113,
-115,3,2,1,0,114,113,1,0,0,0,115,118,1,0,0,0,116,114,1,0,0,0,116,117,1,0,
-0,0,117,119,1,0,0,0,118,116,1,0,0,0,119,120,5,10,0,0,120,23,1,0,0,0,121,
-122,5,11,0,0,122,123,5,4,0,0,123,124,3,30,15,0,124,125,5,5,0,0,125,126,5,
-12,0,0,126,127,3,20,10,0,127,128,5,13,0,0,128,129,3,22,11,0,129,25,1,0,0,
-0,130,131,5,11,0,0,131,132,5,4,0,0,132,133,3,30,15,0,133,134,5,5,0,0,134,
-135,5,12,0,0,135,136,3,20,10,0,136,27,1,0,0,0,137,138,5,14,0,0,138,139,5,
-4,0,0,139,140,3,30,15,0,140,141,5,5,0,0,141,142,3,18,9,0,142,29,1,0,0,0,
-143,144,6,15,-1,0,144,145,5,4,0,0,145,146,3,30,15,0,146,147,5,5,0,0,147,
-158,1,0,0,0,148,149,7,0,0,0,149,158,3,30,15,8,150,158,5,27,0,0,151,158,5,
-28,0,0,152,158,5,29,0,0,153,158,3,34,17,0,154,158,3,36,18,0,155,158,3,32,
-16,0,156,158,3,6,3,0,157,143,1,0,0,0,157,148,1,0,0,0,157,150,1,0,0,0,157,
-151,1,0,0,0,157,152,1,0,0,0,157,153,1,0,0,0,157,154,1,0,0,0,157,155,1,0,
-0,0,157,156,1,0,0,0,158,170,1,0,0,0,159,160,10,11,0,0,160,161,7,1,0,0,161,
-169,3,30,15,12,162,163,10,10,0,0,163,164,7,0,0,0,164,169,3,30,15,11,165,
-166,10,9,0,0,166,167,7,2,0,0,167,169,3,30,15,10,168,159,1,0,0,0,168,162,
-1,0,0,0,168,165,1,0,0,0,169,172,1,0,0,0,170,168,1,0,0,0,170,171,1,0,0,0,
-171,31,1,0,0,0,172,170,1,0,0,0,173,174,5,1,0,0,174,175,5,27,0,0,175,176,
-5,3,0,0,176,177,3,10,5,0,177,33,1,0,0,0,178,187,5,25,0,0,179,184,3,30,15,
-0,180,181,5,7,0,0,181,183,3,30,15,0,182,180,1,0,0,0,183,186,1,0,0,0,184,
-182,1,0,0,0,184,185,1,0,0,0,185,188,1,0,0,0,186,184,1,0,0,0,187,179,1,0,
-0,0,187,188,1,0,0,0,188,189,1,0,0,0,189,190,5,26,0,0,190,35,1,0,0,0,191,
-192,5,27,0,0,192,201,5,4,0,0,193,198,3,30,15,0,194,195,5,7,0,0,195,197,3,
-30,15,0,196,194,1,0,0,0,197,200,1,0,0,0,198,196,1,0,0,0,198,199,1,0,0,0,
-199,202,1,0,0,0,200,198,1,0,0,0,201,193,1,0,0,0,201,202,1,0,0,0,202,203,
-1,0,0,0,203,204,5,5,0,0,204,37,1,0,0,0,15,41,54,60,73,84,98,107,116,157,
-168,170,184,187,198,201];
+2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,1,
+0,5,0,42,8,0,10,0,12,0,45,9,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,
+1,57,8,1,1,2,1,2,1,2,1,2,3,2,63,8,2,1,3,1,3,1,3,1,3,1,4,1,4,1,4,1,4,1,4,
+1,5,1,5,3,5,76,8,5,1,5,1,5,1,5,1,5,1,6,1,6,1,6,5,6,85,8,6,10,6,12,6,88,9,
+6,1,7,1,7,1,8,1,8,1,8,1,8,1,8,1,9,1,9,5,9,99,8,9,10,9,12,9,102,9,9,1,9,1,
+9,1,10,1,10,5,10,108,8,10,10,10,12,10,111,9,10,1,10,1,10,1,11,1,11,5,11,
+117,8,11,10,11,12,11,120,9,11,1,11,1,11,1,12,1,12,5,12,126,8,12,10,12,12,
+12,129,9,12,1,12,1,12,1,13,1,13,1,13,1,13,1,13,1,13,1,13,1,13,1,13,1,14,
+1,14,1,14,1,14,1,14,1,14,1,14,1,15,1,15,1,15,1,15,1,15,1,15,1,16,1,16,1,
+16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,3,16,169,8,16,
+1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,5,16,180,8,16,10,16,12,16,183,
+9,16,1,17,1,17,1,17,1,17,1,17,1,18,1,18,1,18,1,18,5,18,194,8,18,10,18,12,
+18,197,9,18,3,18,199,8,18,1,18,1,18,1,19,1,19,1,19,1,19,1,19,5,19,208,8,
+19,10,19,12,19,211,9,19,3,19,213,8,19,1,19,1,19,1,19,0,1,32,20,0,2,4,6,8,
+10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,0,3,1,0,18,19,1,0,15,17,1,0,
+20,24,228,0,43,1,0,0,0,2,56,1,0,0,0,4,62,1,0,0,0,6,64,1,0,0,0,8,68,1,0,0,
+0,10,73,1,0,0,0,12,81,1,0,0,0,14,89,1,0,0,0,16,91,1,0,0,0,18,96,1,0,0,0,
+20,105,1,0,0,0,22,114,1,0,0,0,24,123,1,0,0,0,26,132,1,0,0,0,28,141,1,0,0,
+0,30,148,1,0,0,0,32,168,1,0,0,0,34,184,1,0,0,0,36,189,1,0,0,0,38,202,1,0,
+0,0,40,42,3,2,1,0,41,40,1,0,0,0,42,45,1,0,0,0,43,41,1,0,0,0,43,44,1,0,0,
+0,44,1,1,0,0,0,45,43,1,0,0,0,46,57,3,4,2,0,47,57,3,8,4,0,48,57,3,14,7,0,
+49,57,3,16,8,0,50,57,3,18,9,0,51,57,3,20,10,0,52,57,3,24,12,0,53,57,3,26,
+13,0,54,57,3,28,14,0,55,57,3,30,15,0,56,46,1,0,0,0,56,47,1,0,0,0,56,48,1,
+0,0,0,56,49,1,0,0,0,56,50,1,0,0,0,56,51,1,0,0,0,56,52,1,0,0,0,56,53,1,0,
+0,0,56,54,1,0,0,0,56,55,1,0,0,0,57,3,1,0,0,0,58,59,5,1,0,0,59,63,3,6,3,0,
+60,61,5,2,0,0,61,63,3,6,3,0,62,58,1,0,0,0,62,60,1,0,0,0,63,5,1,0,0,0,64,
+65,5,27,0,0,65,66,5,3,0,0,66,67,3,32,16,0,67,7,1,0,0,0,68,69,5,1,0,0,69,
+70,5,27,0,0,70,71,5,3,0,0,71,72,3,10,5,0,72,9,1,0,0,0,73,75,5,4,0,0,74,76,
+3,12,6,0,75,74,1,0,0,0,75,76,1,0,0,0,76,77,1,0,0,0,77,78,5,5,0,0,78,79,5,
+6,0,0,79,80,3,18,9,0,80,11,1,0,0,0,81,86,5,27,0,0,82,83,5,7,0,0,83,85,5,
+27,0,0,84,82,1,0,0,0,85,88,1,0,0,0,86,84,1,0,0,0,86,87,1,0,0,0,87,13,1,0,
+0,0,88,86,1,0,0,0,89,90,3,32,16,0,90,15,1,0,0,0,91,92,5,8,0,0,92,93,5,4,
+0,0,93,94,3,32,16,0,94,95,5,5,0,0,95,17,1,0,0,0,96,100,5,9,0,0,97,99,3,2,
+1,0,98,97,1,0,0,0,99,102,1,0,0,0,100,98,1,0,0,0,100,101,1,0,0,0,101,103,
+1,0,0,0,102,100,1,0,0,0,103,104,5,10,0,0,104,19,1,0,0,0,105,109,5,9,0,0,
+106,108,3,2,1,0,107,106,1,0,0,0,108,111,1,0,0,0,109,107,1,0,0,0,109,110,
+1,0,0,0,110,112,1,0,0,0,111,109,1,0,0,0,112,113,5,10,0,0,113,21,1,0,0,0,
+114,118,5,9,0,0,115,117,3,2,1,0,116,115,1,0,0,0,117,120,1,0,0,0,118,116,
+1,0,0,0,118,119,1,0,0,0,119,121,1,0,0,0,120,118,1,0,0,0,121,122,5,10,0,0,
+122,23,1,0,0,0,123,127,5,9,0,0,124,126,3,2,1,0,125,124,1,0,0,0,126,129,1,
+0,0,0,127,125,1,0,0,0,127,128,1,0,0,0,128,130,1,0,0,0,129,127,1,0,0,0,130,
+131,5,10,0,0,131,25,1,0,0,0,132,133,5,11,0,0,133,134,5,4,0,0,134,135,3,32,
+16,0,135,136,5,5,0,0,136,137,5,12,0,0,137,138,3,20,10,0,138,139,5,13,0,0,
+139,140,3,24,12,0,140,27,1,0,0,0,141,142,5,11,0,0,142,143,5,4,0,0,143,144,
+3,32,16,0,144,145,5,5,0,0,145,146,5,12,0,0,146,147,3,22,11,0,147,29,1,0,
+0,0,148,149,5,14,0,0,149,150,5,4,0,0,150,151,3,32,16,0,151,152,5,5,0,0,152,
+153,3,18,9,0,153,31,1,0,0,0,154,155,6,16,-1,0,155,156,5,4,0,0,156,157,3,
+32,16,0,157,158,5,5,0,0,158,169,1,0,0,0,159,160,7,0,0,0,160,169,3,32,16,
+8,161,169,5,27,0,0,162,169,5,28,0,0,163,169,5,29,0,0,164,169,3,36,18,0,165,
+169,3,38,19,0,166,169,3,34,17,0,167,169,3,6,3,0,168,154,1,0,0,0,168,159,
+1,0,0,0,168,161,1,0,0,0,168,162,1,0,0,0,168,163,1,0,0,0,168,164,1,0,0,0,
+168,165,1,0,0,0,168,166,1,0,0,0,168,167,1,0,0,0,169,181,1,0,0,0,170,171,
+10,11,0,0,171,172,7,1,0,0,172,180,3,32,16,12,173,174,10,10,0,0,174,175,7,
+0,0,0,175,180,3,32,16,11,176,177,10,9,0,0,177,178,7,2,0,0,178,180,3,32,16,
+10,179,170,1,0,0,0,179,173,1,0,0,0,179,176,1,0,0,0,180,183,1,0,0,0,181,179,
+1,0,0,0,181,182,1,0,0,0,182,33,1,0,0,0,183,181,1,0,0,0,184,185,5,1,0,0,185,
+186,5,27,0,0,186,187,5,3,0,0,187,188,3,10,5,0,188,35,1,0,0,0,189,198,5,25,
+0,0,190,195,3,32,16,0,191,192,5,7,0,0,192,194,3,32,16,0,193,191,1,0,0,0,
+194,197,1,0,0,0,195,193,1,0,0,0,195,196,1,0,0,0,196,199,1,0,0,0,197,195,
+1,0,0,0,198,190,1,0,0,0,198,199,1,0,0,0,199,200,1,0,0,0,200,201,5,26,0,0,
+201,37,1,0,0,0,202,203,5,27,0,0,203,212,5,4,0,0,204,209,3,32,16,0,205,206,
+5,7,0,0,206,208,3,32,16,0,207,205,1,0,0,0,208,211,1,0,0,0,209,207,1,0,0,
+0,209,210,1,0,0,0,210,213,1,0,0,0,211,209,1,0,0,0,212,204,1,0,0,0,212,213,
+1,0,0,0,213,214,1,0,0,0,214,215,5,5,0,0,215,39,1,0,0,0,16,43,56,62,75,86,
+100,109,118,127,168,179,181,195,198,209,212];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -91,9 +94,10 @@ export default class JavaScriptParser extends antlr4.Parser {
     static ruleNames = [ "program", "statement", "declaration", "variableAssignment", 
                          "functionDeclaration", "functionExpression", "formalParameters", 
                          "expressionStatement", "printStatement", "blockStatement", 
-                         "ifBlockStatement", "elseBlockStatement", "ifThenElseStatement", 
-                         "ifThenStatement", "whileStatement", "expression", 
-                         "lambdaExpression", "listExpression", "callExpression" ];
+                         "ifBlockStatement", "ifThenBlockStatement", "elseBlockStatement", 
+                         "ifThenElseStatement", "ifThenStatement", "whileStatement", 
+                         "expression", "lambdaExpression", "listExpression", 
+                         "callExpression" ];
 
     constructor(input) {
         super(input);
@@ -105,7 +109,7 @@ export default class JavaScriptParser extends antlr4.Parser {
 
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
-    	case 15:
+    	case 16:
     	    		return this.expression_sempred(localctx, predIndex);
         default:
             throw "No predicate with index:" + ruleIndex;
@@ -134,13 +138,13 @@ export default class JavaScriptParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 41;
+	        this.state = 43;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 973884182) !== 0)) {
-	            this.state = 38;
+	            this.state = 40;
 	            this.statement();
-	            this.state = 43;
+	            this.state = 45;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -164,67 +168,67 @@ export default class JavaScriptParser extends antlr4.Parser {
 	    let localctx = new StatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, JavaScriptParser.RULE_statement);
 	    try {
-	        this.state = 54;
+	        this.state = 56;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,1,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 44;
+	            this.state = 46;
 	            this.declaration();
 	            break;
 
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 45;
+	            this.state = 47;
 	            this.functionDeclaration();
 	            break;
 
 	        case 3:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 46;
+	            this.state = 48;
 	            this.expressionStatement();
 	            break;
 
 	        case 4:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 47;
+	            this.state = 49;
 	            this.printStatement();
 	            break;
 
 	        case 5:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 48;
+	            this.state = 50;
 	            this.blockStatement();
 	            break;
 
 	        case 6:
 	            this.enterOuterAlt(localctx, 6);
-	            this.state = 49;
+	            this.state = 51;
 	            this.ifBlockStatement();
 	            break;
 
 	        case 7:
 	            this.enterOuterAlt(localctx, 7);
-	            this.state = 50;
+	            this.state = 52;
 	            this.elseBlockStatement();
 	            break;
 
 	        case 8:
 	            this.enterOuterAlt(localctx, 8);
-	            this.state = 51;
+	            this.state = 53;
 	            this.ifThenElseStatement();
 	            break;
 
 	        case 9:
 	            this.enterOuterAlt(localctx, 9);
-	            this.state = 52;
+	            this.state = 54;
 	            this.ifThenStatement();
 	            break;
 
 	        case 10:
 	            this.enterOuterAlt(localctx, 10);
-	            this.state = 53;
+	            this.state = 55;
 	            this.whileStatement();
 	            break;
 
@@ -249,21 +253,21 @@ export default class JavaScriptParser extends antlr4.Parser {
 	    let localctx = new DeclarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, JavaScriptParser.RULE_declaration);
 	    try {
-	        this.state = 60;
+	        this.state = 62;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 56;
+	            this.state = 58;
 	            this.match(JavaScriptParser.T__0);
-	            this.state = 57;
+	            this.state = 59;
 	            this.variableAssignment();
 	            break;
 	        case 2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 58;
+	            this.state = 60;
 	            this.match(JavaScriptParser.T__1);
-	            this.state = 59;
+	            this.state = 61;
 	            this.variableAssignment();
 	            break;
 	        default:
@@ -290,11 +294,11 @@ export default class JavaScriptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 6, JavaScriptParser.RULE_variableAssignment);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 62;
-	        this.match(JavaScriptParser.IDENTIFIER);
-	        this.state = 63;
-	        this.match(JavaScriptParser.T__2);
 	        this.state = 64;
+	        this.match(JavaScriptParser.IDENTIFIER);
+	        this.state = 65;
+	        this.match(JavaScriptParser.T__2);
+	        this.state = 66;
 	        this.expression(0);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -317,13 +321,13 @@ export default class JavaScriptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 8, JavaScriptParser.RULE_functionDeclaration);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 66;
-	        this.match(JavaScriptParser.T__0);
-	        this.state = 67;
-	        this.match(JavaScriptParser.IDENTIFIER);
 	        this.state = 68;
-	        this.match(JavaScriptParser.T__2);
+	        this.match(JavaScriptParser.T__0);
 	        this.state = 69;
+	        this.match(JavaScriptParser.IDENTIFIER);
+	        this.state = 70;
+	        this.match(JavaScriptParser.T__2);
+	        this.state = 71;
 	        this.functionExpression();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -347,21 +351,21 @@ export default class JavaScriptParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 71;
-	        this.match(JavaScriptParser.T__3);
 	        this.state = 73;
+	        this.match(JavaScriptParser.T__3);
+	        this.state = 75;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        if(_la===27) {
-	            this.state = 72;
+	            this.state = 74;
 	            this.formalParameters();
 	        }
 
-	        this.state = 75;
-	        this.match(JavaScriptParser.T__4);
-	        this.state = 76;
-	        this.match(JavaScriptParser.T__5);
 	        this.state = 77;
+	        this.match(JavaScriptParser.T__4);
+	        this.state = 78;
+	        this.match(JavaScriptParser.T__5);
+	        this.state = 79;
 	        this.blockStatement();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -385,17 +389,17 @@ export default class JavaScriptParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 79;
+	        this.state = 81;
 	        this.match(JavaScriptParser.IDENTIFIER);
-	        this.state = 84;
+	        this.state = 86;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        while(_la===7) {
-	            this.state = 80;
+	            this.state = 82;
 	            this.match(JavaScriptParser.T__6);
-	            this.state = 81;
+	            this.state = 83;
 	            this.match(JavaScriptParser.IDENTIFIER);
-	            this.state = 86;
+	            this.state = 88;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -420,7 +424,7 @@ export default class JavaScriptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 14, JavaScriptParser.RULE_expressionStatement);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 87;
+	        this.state = 89;
 	        this.expression(0);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -443,13 +447,13 @@ export default class JavaScriptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 16, JavaScriptParser.RULE_printStatement);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 89;
-	        this.match(JavaScriptParser.T__7);
-	        this.state = 90;
-	        this.match(JavaScriptParser.T__3);
 	        this.state = 91;
-	        this.expression(0);
+	        this.match(JavaScriptParser.T__7);
 	        this.state = 92;
+	        this.match(JavaScriptParser.T__3);
+	        this.state = 93;
+	        this.expression(0);
+	        this.state = 94;
 	        this.match(JavaScriptParser.T__4);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -473,19 +477,19 @@ export default class JavaScriptParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 94;
+	        this.state = 96;
 	        this.match(JavaScriptParser.T__8);
-	        this.state = 98;
+	        this.state = 100;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 973884182) !== 0)) {
-	            this.state = 95;
+	            this.state = 97;
 	            this.statement();
-	            this.state = 100;
+	            this.state = 102;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 101;
+	        this.state = 103;
 	        this.match(JavaScriptParser.T__9);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -509,19 +513,55 @@ export default class JavaScriptParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 103;
+	        this.state = 105;
 	        this.match(JavaScriptParser.T__8);
-	        this.state = 107;
+	        this.state = 109;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 973884182) !== 0)) {
-	            this.state = 104;
+	            this.state = 106;
 	            this.statement();
-	            this.state = 109;
+	            this.state = 111;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 110;
+	        this.state = 112;
+	        this.match(JavaScriptParser.T__9);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	ifThenBlockStatement() {
+	    let localctx = new IfThenBlockStatementContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 22, JavaScriptParser.RULE_ifThenBlockStatement);
+	    var _la = 0;
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 114;
+	        this.match(JavaScriptParser.T__8);
+	        this.state = 118;
+	        this._errHandler.sync(this);
+	        _la = this._input.LA(1);
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 973884182) !== 0)) {
+	            this.state = 115;
+	            this.statement();
+	            this.state = 120;
+	            this._errHandler.sync(this);
+	            _la = this._input.LA(1);
+	        }
+	        this.state = 121;
 	        this.match(JavaScriptParser.T__9);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -541,23 +581,23 @@ export default class JavaScriptParser extends antlr4.Parser {
 
 	elseBlockStatement() {
 	    let localctx = new ElseBlockStatementContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 22, JavaScriptParser.RULE_elseBlockStatement);
+	    this.enterRule(localctx, 24, JavaScriptParser.RULE_elseBlockStatement);
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 112;
+	        this.state = 123;
 	        this.match(JavaScriptParser.T__8);
-	        this.state = 116;
+	        this.state = 127;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 973884182) !== 0)) {
-	            this.state = 113;
+	            this.state = 124;
 	            this.statement();
-	            this.state = 118;
+	            this.state = 129;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 119;
+	        this.state = 130;
 	        this.match(JavaScriptParser.T__9);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -577,24 +617,24 @@ export default class JavaScriptParser extends antlr4.Parser {
 
 	ifThenElseStatement() {
 	    let localctx = new IfThenElseStatementContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 24, JavaScriptParser.RULE_ifThenElseStatement);
+	    this.enterRule(localctx, 26, JavaScriptParser.RULE_ifThenElseStatement);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 121;
+	        this.state = 132;
 	        this.match(JavaScriptParser.T__10);
-	        this.state = 122;
+	        this.state = 133;
 	        this.match(JavaScriptParser.T__3);
-	        this.state = 123;
+	        this.state = 134;
 	        this.expression(0);
-	        this.state = 124;
+	        this.state = 135;
 	        this.match(JavaScriptParser.T__4);
-	        this.state = 125;
+	        this.state = 136;
 	        this.match(JavaScriptParser.T__11);
-	        this.state = 126;
+	        this.state = 137;
 	        this.ifBlockStatement();
-	        this.state = 127;
+	        this.state = 138;
 	        this.match(JavaScriptParser.T__12);
-	        this.state = 128;
+	        this.state = 139;
 	        this.elseBlockStatement();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -614,21 +654,21 @@ export default class JavaScriptParser extends antlr4.Parser {
 
 	ifThenStatement() {
 	    let localctx = new IfThenStatementContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 26, JavaScriptParser.RULE_ifThenStatement);
+	    this.enterRule(localctx, 28, JavaScriptParser.RULE_ifThenStatement);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 130;
+	        this.state = 141;
 	        this.match(JavaScriptParser.T__10);
-	        this.state = 131;
+	        this.state = 142;
 	        this.match(JavaScriptParser.T__3);
-	        this.state = 132;
+	        this.state = 143;
 	        this.expression(0);
-	        this.state = 133;
+	        this.state = 144;
 	        this.match(JavaScriptParser.T__4);
-	        this.state = 134;
+	        this.state = 145;
 	        this.match(JavaScriptParser.T__11);
-	        this.state = 135;
-	        this.ifBlockStatement();
+	        this.state = 146;
+	        this.ifThenBlockStatement();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -647,18 +687,18 @@ export default class JavaScriptParser extends antlr4.Parser {
 
 	whileStatement() {
 	    let localctx = new WhileStatementContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 28, JavaScriptParser.RULE_whileStatement);
+	    this.enterRule(localctx, 30, JavaScriptParser.RULE_whileStatement);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 137;
+	        this.state = 148;
 	        this.match(JavaScriptParser.T__13);
-	        this.state = 138;
+	        this.state = 149;
 	        this.match(JavaScriptParser.T__3);
-	        this.state = 139;
+	        this.state = 150;
 	        this.expression(0);
-	        this.state = 140;
+	        this.state = 151;
 	        this.match(JavaScriptParser.T__4);
-	        this.state = 141;
+	        this.state = 152;
 	        this.blockStatement();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -683,25 +723,25 @@ export default class JavaScriptParser extends antlr4.Parser {
 	    const _parentState = this.state;
 	    let localctx = new ExpressionContext(this, this._ctx, _parentState);
 	    let _prevctx = localctx;
-	    const _startState = 30;
-	    this.enterRecursionRule(localctx, 30, JavaScriptParser.RULE_expression, _p);
+	    const _startState = 32;
+	    this.enterRecursionRule(localctx, 32, JavaScriptParser.RULE_expression, _p);
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 157;
+	        this.state = 168;
 	        this._errHandler.sync(this);
-	        var la_ = this._interp.adaptivePredict(this._input,8,this._ctx);
+	        var la_ = this._interp.adaptivePredict(this._input,9,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            localctx = new ParensContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 
-	            this.state = 144;
+	            this.state = 155;
 	            this.match(JavaScriptParser.T__3);
-	            this.state = 145;
+	            this.state = 156;
 	            this.expression(0);
-	            this.state = 146;
+	            this.state = 157;
 	            this.match(JavaScriptParser.T__4);
 	            break;
 
@@ -709,7 +749,7 @@ export default class JavaScriptParser extends antlr4.Parser {
 	            localctx = new UnaryExprContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 148;
+	            this.state = 159;
 	            _la = this._input.LA(1);
 	            if(!(_la===18 || _la===19)) {
 	            this._errHandler.recoverInline(this);
@@ -718,7 +758,7 @@ export default class JavaScriptParser extends antlr4.Parser {
 	            	this._errHandler.reportMatch(this);
 	                this.consume();
 	            }
-	            this.state = 149;
+	            this.state = 160;
 	            this.expression(8);
 	            break;
 
@@ -726,7 +766,7 @@ export default class JavaScriptParser extends antlr4.Parser {
 	            localctx = new IdentifierExprContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 150;
+	            this.state = 161;
 	            this.match(JavaScriptParser.IDENTIFIER);
 	            break;
 
@@ -734,7 +774,7 @@ export default class JavaScriptParser extends antlr4.Parser {
 	            localctx = new NumberExprContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 151;
+	            this.state = 162;
 	            this.match(JavaScriptParser.NUMBER);
 	            break;
 
@@ -742,7 +782,7 @@ export default class JavaScriptParser extends antlr4.Parser {
 	            localctx = new StringExprContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 152;
+	            this.state = 163;
 	            this.match(JavaScriptParser.STRING_LITERAL);
 	            break;
 
@@ -750,7 +790,7 @@ export default class JavaScriptParser extends antlr4.Parser {
 	            localctx = new ListExprContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 153;
+	            this.state = 164;
 	            this.listExpression();
 	            break;
 
@@ -758,7 +798,7 @@ export default class JavaScriptParser extends antlr4.Parser {
 	            localctx = new CallExprContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 154;
+	            this.state = 165;
 	            this.callExpression();
 	            break;
 
@@ -766,7 +806,7 @@ export default class JavaScriptParser extends antlr4.Parser {
 	            localctx = new LambdaExprContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 155;
+	            this.state = 166;
 	            this.lambdaExpression();
 	            break;
 
@@ -774,33 +814,33 @@ export default class JavaScriptParser extends antlr4.Parser {
 	            localctx = new VariableAssigContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 156;
+	            this.state = 167;
 	            this.variableAssignment();
 	            break;
 
 	        }
 	        this._ctx.stop = this._input.LT(-1);
-	        this.state = 170;
+	        this.state = 181;
 	        this._errHandler.sync(this);
-	        var _alt = this._interp.adaptivePredict(this._input,10,this._ctx)
+	        var _alt = this._interp.adaptivePredict(this._input,11,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 	            if(_alt===1) {
 	                if(this._parseListeners!==null) {
 	                    this.triggerExitRuleEvent();
 	                }
 	                _prevctx = localctx;
-	                this.state = 168;
+	                this.state = 179;
 	                this._errHandler.sync(this);
-	                var la_ = this._interp.adaptivePredict(this._input,9,this._ctx);
+	                var la_ = this._interp.adaptivePredict(this._input,10,this._ctx);
 	                switch(la_) {
 	                case 1:
 	                    localctx = new MultiplicativeExprContext(this, new ExpressionContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, JavaScriptParser.RULE_expression);
-	                    this.state = 159;
+	                    this.state = 170;
 	                    if (!( this.precpred(this._ctx, 11))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 11)");
 	                    }
-	                    this.state = 160;
+	                    this.state = 171;
 	                    _la = this._input.LA(1);
 	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 229376) !== 0))) {
 	                    this._errHandler.recoverInline(this);
@@ -809,18 +849,18 @@ export default class JavaScriptParser extends antlr4.Parser {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 161;
+	                    this.state = 172;
 	                    this.expression(12);
 	                    break;
 
 	                case 2:
 	                    localctx = new AdditiveExprContext(this, new ExpressionContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, JavaScriptParser.RULE_expression);
-	                    this.state = 162;
+	                    this.state = 173;
 	                    if (!( this.precpred(this._ctx, 10))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 10)");
 	                    }
-	                    this.state = 163;
+	                    this.state = 174;
 	                    _la = this._input.LA(1);
 	                    if(!(_la===18 || _la===19)) {
 	                    this._errHandler.recoverInline(this);
@@ -829,18 +869,18 @@ export default class JavaScriptParser extends antlr4.Parser {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 164;
+	                    this.state = 175;
 	                    this.expression(11);
 	                    break;
 
 	                case 3:
 	                    localctx = new CompareExprContext(this, new ExpressionContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, JavaScriptParser.RULE_expression);
-	                    this.state = 165;
+	                    this.state = 176;
 	                    if (!( this.precpred(this._ctx, 9))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 9)");
 	                    }
-	                    this.state = 166;
+	                    this.state = 177;
 	                    _la = this._input.LA(1);
 	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 32505856) !== 0))) {
 	                    this._errHandler.recoverInline(this);
@@ -849,15 +889,15 @@ export default class JavaScriptParser extends antlr4.Parser {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 167;
+	                    this.state = 178;
 	                    this.expression(10);
 	                    break;
 
 	                } 
 	            }
-	            this.state = 172;
+	            this.state = 183;
 	            this._errHandler.sync(this);
-	            _alt = this._interp.adaptivePredict(this._input,10,this._ctx);
+	            _alt = this._interp.adaptivePredict(this._input,11,this._ctx);
 	        }
 
 	    } catch( error) {
@@ -878,16 +918,16 @@ export default class JavaScriptParser extends antlr4.Parser {
 
 	lambdaExpression() {
 	    let localctx = new LambdaExpressionContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 32, JavaScriptParser.RULE_lambdaExpression);
+	    this.enterRule(localctx, 34, JavaScriptParser.RULE_lambdaExpression);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 173;
+	        this.state = 184;
 	        this.match(JavaScriptParser.T__0);
-	        this.state = 174;
+	        this.state = 185;
 	        this.match(JavaScriptParser.IDENTIFIER);
-	        this.state = 175;
+	        this.state = 186;
 	        this.match(JavaScriptParser.T__2);
-	        this.state = 176;
+	        this.state = 187;
 	        this.functionExpression();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -907,33 +947,33 @@ export default class JavaScriptParser extends antlr4.Parser {
 
 	listExpression() {
 	    let localctx = new ListExpressionContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 34, JavaScriptParser.RULE_listExpression);
+	    this.enterRule(localctx, 36, JavaScriptParser.RULE_listExpression);
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 178;
+	        this.state = 189;
 	        this.match(JavaScriptParser.T__24);
-	        this.state = 187;
+	        this.state = 198;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 973864978) !== 0)) {
-	            this.state = 179;
+	            this.state = 190;
 	            this.expression(0);
-	            this.state = 184;
+	            this.state = 195;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	            while(_la===7) {
-	                this.state = 180;
+	                this.state = 191;
 	                this.match(JavaScriptParser.T__6);
-	                this.state = 181;
+	                this.state = 192;
 	                this.expression(0);
-	                this.state = 186;
+	                this.state = 197;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	            }
 	        }
 
-	        this.state = 189;
+	        this.state = 200;
 	        this.match(JavaScriptParser.T__25);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -953,35 +993,35 @@ export default class JavaScriptParser extends antlr4.Parser {
 
 	callExpression() {
 	    let localctx = new CallExpressionContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 36, JavaScriptParser.RULE_callExpression);
+	    this.enterRule(localctx, 38, JavaScriptParser.RULE_callExpression);
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 191;
+	        this.state = 202;
 	        this.match(JavaScriptParser.IDENTIFIER);
-	        this.state = 192;
+	        this.state = 203;
 	        this.match(JavaScriptParser.T__3);
-	        this.state = 201;
+	        this.state = 212;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 973864978) !== 0)) {
-	            this.state = 193;
+	            this.state = 204;
 	            this.expression(0);
-	            this.state = 198;
+	            this.state = 209;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	            while(_la===7) {
-	                this.state = 194;
+	                this.state = 205;
 	                this.match(JavaScriptParser.T__6);
-	                this.state = 195;
+	                this.state = 206;
 	                this.expression(0);
-	                this.state = 200;
+	                this.state = 211;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	            }
 	        }
 
-	        this.state = 203;
+	        this.state = 214;
 	        this.match(JavaScriptParser.T__4);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1043,14 +1083,15 @@ JavaScriptParser.RULE_expressionStatement = 7;
 JavaScriptParser.RULE_printStatement = 8;
 JavaScriptParser.RULE_blockStatement = 9;
 JavaScriptParser.RULE_ifBlockStatement = 10;
-JavaScriptParser.RULE_elseBlockStatement = 11;
-JavaScriptParser.RULE_ifThenElseStatement = 12;
-JavaScriptParser.RULE_ifThenStatement = 13;
-JavaScriptParser.RULE_whileStatement = 14;
-JavaScriptParser.RULE_expression = 15;
-JavaScriptParser.RULE_lambdaExpression = 16;
-JavaScriptParser.RULE_listExpression = 17;
-JavaScriptParser.RULE_callExpression = 18;
+JavaScriptParser.RULE_ifThenBlockStatement = 11;
+JavaScriptParser.RULE_elseBlockStatement = 12;
+JavaScriptParser.RULE_ifThenElseStatement = 13;
+JavaScriptParser.RULE_ifThenStatement = 14;
+JavaScriptParser.RULE_whileStatement = 15;
+JavaScriptParser.RULE_expression = 16;
+JavaScriptParser.RULE_lambdaExpression = 17;
+JavaScriptParser.RULE_listExpression = 18;
+JavaScriptParser.RULE_callExpression = 19;
 
 class ProgramContext extends antlr4.ParserRuleContext {
 
@@ -1470,6 +1511,44 @@ class IfBlockStatementContext extends antlr4.ParserRuleContext {
 
 
 
+class IfThenBlockStatementContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = JavaScriptParser.RULE_ifThenBlockStatement;
+    }
+
+	statement = function(i) {
+	    if(i===undefined) {
+	        i = null;
+	    }
+	    if(i===null) {
+	        return this.getTypedRuleContexts(StatementContext);
+	    } else {
+	        return this.getTypedRuleContext(StatementContext,i);
+	    }
+	};
+
+	accept(visitor) {
+	    if ( visitor instanceof JavaScriptVisitor ) {
+	        return visitor.visitIfThenBlockStatement(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
+
+}
+
+
+
 class ElseBlockStatementContext extends antlr4.ParserRuleContext {
 
     constructor(parser, parent, invokingState) {
@@ -1565,8 +1644,8 @@ class IfThenStatementContext extends antlr4.ParserRuleContext {
 	    return this.getTypedRuleContext(ExpressionContext,0);
 	};
 
-	ifBlockStatement() {
-	    return this.getTypedRuleContext(IfBlockStatementContext,0);
+	ifThenBlockStatement() {
+	    return this.getTypedRuleContext(IfThenBlockStatementContext,0);
 	};
 
 	accept(visitor) {
@@ -2076,6 +2155,7 @@ JavaScriptParser.ExpressionStatementContext = ExpressionStatementContext;
 JavaScriptParser.PrintStatementContext = PrintStatementContext; 
 JavaScriptParser.BlockStatementContext = BlockStatementContext; 
 JavaScriptParser.IfBlockStatementContext = IfBlockStatementContext; 
+JavaScriptParser.IfThenBlockStatementContext = IfThenBlockStatementContext; 
 JavaScriptParser.ElseBlockStatementContext = ElseBlockStatementContext; 
 JavaScriptParser.IfThenElseStatementContext = IfThenElseStatementContext; 
 JavaScriptParser.IfThenStatementContext = IfThenStatementContext; 

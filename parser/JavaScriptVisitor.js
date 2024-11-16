@@ -72,6 +72,12 @@ export default class JavaScriptVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
+	// Visit a parse tree produced by JavaScriptParser#ifThenBlockStatement.
+	visitIfThenBlockStatement(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 	// Visit a parse tree produced by JavaScriptParser#elseBlockStatement.
 	visitElseBlockStatement(ctx) {
 	  return this.visitChildren(ctx);

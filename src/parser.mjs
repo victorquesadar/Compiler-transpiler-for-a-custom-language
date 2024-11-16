@@ -82,10 +82,7 @@ class MyVisitor extends JavaScriptVisitor {
 	visitIfThenElseStatement(ctx) {
 		const condition = this.visit(ctx.expression(0));
 		condition.isIf = true;
-
-
 		const thenBranch = this.visit(ctx.ifBlockStatement(0));
-		
 		const elseBranch = this.visit(ctx.elseBlockStatement(1));
 
 		function countLeafNodes(node) {
@@ -94,7 +91,6 @@ class MyVisitor extends JavaScriptVisitor {
 				node = node[0];
 			}
 			let leafCount = 0;
-
 			// Condición para determinar si es una hoja: no tiene `children`
 			if (!node.children || node.children.length === 0) {
 				leafCount += node.weight;
@@ -105,8 +101,6 @@ class MyVisitor extends JavaScriptVisitor {
 			// Si tiene hijos en `children`, cuenta los nodos hoja en cada hijo recursivamente
 			return leafCount += node.children.reduce((count, child) => count + countLeafNodes(child), 0);
 		}
-
-	
 		condition.weight = (countLeafNodes(thenBranch))+1;        //para que no caiga en el bt y se salte el else
 		thenBranch.weight = countLeafNodes(elseBranch);
 		return new ASTNode("IF_THEN_ELSE", null, [condition, thenBranch, elseBranch]);
@@ -118,6 +112,12 @@ class MyVisitor extends JavaScriptVisitor {
 		return new ASTNode("blockStatement", null, statements);
 	}
 
+	visitIfThenBlockStatement(ctx) {
+		const statements = ctx.statement().map(statement => this.visit(statement));
+
+		return new ASTNode("blockStatementIf", null, statements);
+	}
+
 	visitElseBlockStatement(ctx) {
 		const statements = ctx.statement().map(statement => this.visit(statement));
 		return new ASTNode("elseBlockStatement", null, statements);
@@ -125,8 +125,27 @@ class MyVisitor extends JavaScriptVisitor {
 
 	visitIfThenStatement(ctx) {
 		const condition = this.visit(ctx.expression(0));
-		const thenBranch = this.visit(ctx.ifBlockStatement(0));
+		condition.isIf = true;
+		const thenBranch = this.visit(ctx.ifThenBlockStatement(0));
 
+		function countLeafNodes(node) {
+			// Desciende recursivamente en `node[0]` hasta encontrar un nodo sin `node[0]`
+			while (node[0] instanceof ASTNode || Array.isArray(node[0])) {
+				node = node[0];
+			}
+			let leafCount = 0;
+			// Condición para determinar si es una hoja: no tiene `children`
+			if (!node.children || node.children.length === 0) {
+				leafCount += node.weight;
+			} else if (node.weight > 0) {
+				leafCount += node.weight;
+			}
+
+			// Si tiene hijos en `children`, cuenta los nodos hoja en cada hijo recursivamente
+			return leafCount += node.children.reduce((count, child) => count + countLeafNodes(child), 0);
+		}
+		condition.weight = (countLeafNodes(thenBranch)) ; // para que no caiga en el bt y se salte el else
+		thenBranch.weight = countLeafNodes(thenBranch);
 		return new ASTNode("IF_THEN", null, [condition, thenBranch]);
 	}
 

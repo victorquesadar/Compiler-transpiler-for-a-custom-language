@@ -13,6 +13,7 @@ statement
     | elseBlockStatement
     | ifThenElseStatement
     | ifThenStatement
+    
     | whileStatement
     
     ;
@@ -54,6 +55,10 @@ ifBlockStatement
     : '{' statement* '}'
     ;
 
+ifThenBlockStatement
+    : '{' statement* '}'
+    ;
+
 elseBlockStatement
     : '{' statement* '}'
     ;
@@ -63,7 +68,7 @@ ifThenElseStatement
     ;
 
 ifThenStatement
-    : 'if' '('expression')' 'then' ifBlockStatement 
+    : 'if' '('expression')' 'then' ifThenBlockStatement 
     ;
 
 whileStatement
