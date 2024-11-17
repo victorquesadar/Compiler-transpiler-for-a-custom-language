@@ -1,4 +1,32 @@
-import fs from 'fs';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: generator.mjs</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: generator.mjs</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import fs from 'fs';
 import path from 'path';
 /**
  * @file
@@ -72,7 +100,7 @@ function printPostOrder(node) {
 
     /**
      * Mapeo de tipos de nodos a funciones manejadoras.
-     * @type {Object<string, Function>}
+     * @type {Object&lt;string, Function>}
      */
     const handlers = {
         'FUNCTION_DECLARATION': handleFunctionDeclaration,
@@ -96,7 +124,7 @@ function printPostOrder(node) {
 
 
     // Procesar hijos recursivamente
-    if (node.children && node.children.length > 0) {
+    if (node.children &amp;&amp; node.children.length > 0) {
         node.children.forEach(printPostOrder);
     }
 
@@ -146,7 +174,7 @@ function handleNumber(node) {
  */
 function handlePrint(node) {
     generatedCode.push('PRN');
-    if (node.value && node.value.children) {
+    if (node.value &amp;&amp; node.value.children) {
         node.value.children.forEach(printPostOrder);
     }
 }
@@ -157,7 +185,7 @@ function handlePrint(node) {
  */
 function handleReturn(node) {
     generatedCode.push('RET');
-    if (node.value && node.value.children) {
+    if (node.value &amp;&amp; node.value.children) {
         node.value.children.forEach(printPostOrder);
     }
 }
@@ -168,7 +196,7 @@ function handleReturn(node) {
  */
 function handleCallList(node) {
     generatedCode.push('LTK');
-    if (node.value && node.value.children) {
+    if (node.value &amp;&amp; node.value.children) {
         node.value.children.forEach(printPostOrder);
     }
 }
@@ -180,10 +208,10 @@ function handleCallList(node) {
 function handleIdentifier(node) {
     for (let i = variableCount.length - 1; i >= 0; i--) {
         const existingIdentifier = variableCount[i].variableList.find(ident => ident.label === node.value.name);
-        if (existingIdentifier && insideFunction>0) {
+        if (existingIdentifier &amp;&amp; insideFunction>0) {
             generatedCode.push("BLD " +String(Math.abs(i-(variableCount.length-1)))+' ' +String(existingIdentifier.value));
             return;
-        }else if(existingIdentifier && insideFunction == 0){
+        }else if(existingIdentifier &amp;&amp; insideFunction == 0){
             generatedCode.push("BLD 0 " +String(existingIdentifier.value));
             return;
         }
@@ -204,7 +232,7 @@ function handleParameter(node) {
     }  
     const existingIdentifier = variableCount[frameCount].variableList.find(ident => ident.label === node.value.name) !== undefined;
     if (!existingIdentifier) {
-        for (let i = 0; i < node.value; i++) {
+        for (let i = 0; i &lt; node.value; i++) {
             const identy = new Identifier(node.children[i], variable);
             variableCount[frameCount].variableList.push(identy);
             variable++;
@@ -343,3 +371,26 @@ export function writeToFile(directory, filename) {
 
 
 export { printPostOrder };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ASTNode.html">ASTNode</a></li><li><a href="CustomErrorListener.html">CustomErrorListener</a></li><li><a href="Identifier.html">Identifier</a></li><li><a href="MyVisitor.html">MyVisitor</a></li></ul><h3>Global</h3><ul><li><a href="global.html#compile">compile</a></li><li><a href="global.html#countLeafNodes">countLeafNodes</a></li><li><a href="global.html#handleBinaryOper">handleBinaryOper</a></li><li><a href="global.html#handleBlockStatement">handleBlockStatement</a></li><li><a href="global.html#handleCall">handleCall</a></li><li><a href="global.html#handleCallList">handleCallList</a></li><li><a href="global.html#handleCompare">handleCompare</a></li><li><a href="global.html#handleEnd">handleEnd</a></li><li><a href="global.html#handleFunctionDeclaration">handleFunctionDeclaration</a></li><li><a href="global.html#handleIdentifier">handleIdentifier</a></li><li><a href="global.html#handleInt">handleInt</a></li><li><a href="global.html#handleLet">handleLet</a></li><li><a href="global.html#handleList">handleList</a></li><li><a href="global.html#handleNumber">handleNumber</a></li><li><a href="global.html#handleParameter">handleParameter</a></li><li><a href="global.html#handlePrint">handlePrint</a></li><li><a href="global.html#handleReturn">handleReturn</a></li><li><a href="global.html#handleStr">handleStr</a></li><li><a href="global.html#handleWhile">handleWhile</a></li><li><a href="global.html#printPostOrder">printPostOrder</a></li><li><a href="global.html#variableCount">variableCount</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Sun Nov 17 2024 15:41:39 GMT-0600 (Central Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

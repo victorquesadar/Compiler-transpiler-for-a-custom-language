@@ -1,0 +1,10 @@
+$FUN $1
+LDV "Testing helloworld Version 1 ***"
+PRN
+RET
+$END $1
+LDF $1
+APP
+LDV "Hello World!"
+PRN
+HLT

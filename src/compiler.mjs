@@ -17,7 +17,7 @@ import JavaScriptParser  from '../parser/JavaScriptParser.js'
 
 import { MyVisitor } from './parser.mjs'
 
-import { printPostOrder } from './generator.mjs'
+import { printPostOrder,writeToFile } from './generator.mjs'
 
 import CustomErrorListener from './CustomErrorListener.mjs';
 
@@ -33,7 +33,7 @@ async function compile(filename) {
 	
   try{
 	  
-    const input = await fs.promises.readFile(filename, 'utf8')
+    const input = await fs.promises.readFile('./test/'+filename, 'utf8')
 	
 
     const chars = new antlr4.InputStream(input)
@@ -63,25 +63,30 @@ async function compile(filename) {
   
     console.log('\n;;;*** Compiler Post-order starts ***\n')
     printPostOrder(ast);
+
+    const outputFilename = filename.replace('.txt', '.biesVM')
+
+    writeToFile('./outputs',outputFilename );
+
 	console.log('\n;;;*** Compiler Post-order ends ***\n')
   }catch (error) {
     console.error(`*** Compiler::compile Error: ${error.message} ***`)
   }
 }
-const default_filename = './test/input2.txt'
+const default_filename = 'input2.txt'
 
-export function main(){
+export function main() {
 	
 	let filename = process.argv[2]
 	
 	if (!filename) {
 	  console.log(`*** Warning: No filename in commnd line given! Using ${default_filename} ***`)
 	  filename = default_filename
-	  try{
+	  
+	}
+  try{
 		compile(filename)
 	  }catch (error){
 		  console.error(`*** Compiler::main Error: ${error.message} ***`)
 	  }
-	  
-	}
 }

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: compiler.mjs</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: compiler.mjs</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file
+ * Este archivo contiene la implementación de la función principal del compilador que utiliza ANTLR para analizar el código fuente,
+ * generar un árbol de sintaxis abstracta (AST) y luego recorrerlo en postorden para ejecutar las acciones correspondientes.
+ *
+ * @version 1.0.0
+ * @authors 
+ * - Victor Quesada Rodriguez
+ * - Esteban Mojica
+ * - Pablo Alvarez
+ * @date Última modificación: 2024-11-14
+ */
+import antlr4 from 'antlr4'
+
+import JavaScriptLexer  from '../parser/JavaScriptLexer.js'
+import JavaScriptParser  from '../parser/JavaScriptParser.js'
+
+import { MyVisitor } from './parser.mjs'
+
+import { printPostOrder,writeToFile } from './generator.mjs'
+
+import CustomErrorListener from './CustomErrorListener.mjs';
+
+import fs from 'fs'
+
+/**
+ * Compila el archivo especificado.
+ * 
+ * @param {string} filename - El nombre del archivo a compilar.
+ * @returns {Promise&lt;void>} Una promesa que se resuelve cuando la compilación se completa.
+ */
+async function compile(filename) {
+	
+  try{
+	  
+    const input = await fs.promises.readFile('./test/'+filename, 'utf8')
+	
+
+    const chars = new antlr4.InputStream(input)
+    const lexer = new JavaScriptLexer(chars)
+    const tokens = new antlr4.CommonTokenStream(lexer)
+    const parser = new JavaScriptParser(tokens)
+
+    tokens.fill();  // Rellena todos los tokens
+    console.log('Generated Tokens:');
+	
+    const errorListener = new CustomErrorListener();
+    //parser.removeErrorListeners()
+    //parser.addErrorListener(errorListener)
+
+    parser.buildParseTrees = true
+	
+    const tree = parser.program()
+
+    if (parser._syntaxErrors > 0) {
+      console.error('Parsing failed due to syntax errors.')
+      return;
+    }
+
+    const visitor = new MyVisitor()
+	
+    const ast = visitor.visit(tree)
+  
+    console.log('\n;;;*** Compiler Post-order starts ***\n')
+    printPostOrder(ast);
+
+    const outputFilename = filename.replace('.txt', '.biesVM')
+
+    writeToFile('./outputs',outputFilename );
+
+	console.log('\n;;;*** Compiler Post-order ends ***\n')
+  }catch (error) {
+    console.error(`*** Compiler::compile Error: ${error.message} ***`)
+  }
+}
+const default_filename = 'input2.txt'
+
+export function main() {
+	
+	let filename = process.argv[2]
+	
+	if (!filename) {
+	  console.log(`*** Warning: No filename in commnd line given! Using ${default_filename} ***`)
+	  filename = default_filename
+	  
+	}
+  try{
+		compile(filename)
+	  }catch (error){
+		  console.error(`*** Compiler::main Error: ${error.message} ***`)
+	  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ASTNode.html">ASTNode</a></li><li><a href="CustomErrorListener.html">CustomErrorListener</a></li><li><a href="Identifier.html">Identifier</a></li><li><a href="MyVisitor.html">MyVisitor</a></li></ul><h3>Global</h3><ul><li><a href="global.html#compile">compile</a></li><li><a href="global.html#countLeafNodes">countLeafNodes</a></li><li><a href="global.html#handleBinaryOper">handleBinaryOper</a></li><li><a href="global.html#handleBlockStatement">handleBlockStatement</a></li><li><a href="global.html#handleCall">handleCall</a></li><li><a href="global.html#handleCallList">handleCallList</a></li><li><a href="global.html#handleCompare">handleCompare</a></li><li><a href="global.html#handleEnd">handleEnd</a></li><li><a href="global.html#handleFunctionDeclaration">handleFunctionDeclaration</a></li><li><a href="global.html#handleIdentifier">handleIdentifier</a></li><li><a href="global.html#handleInt">handleInt</a></li><li><a href="global.html#handleLet">handleLet</a></li><li><a href="global.html#handleList">handleList</a></li><li><a href="global.html#handleNumber">handleNumber</a></li><li><a href="global.html#handleParameter">handleParameter</a></li><li><a href="global.html#handlePrint">handlePrint</a></li><li><a href="global.html#handleReturn">handleReturn</a></li><li><a href="global.html#handleStr">handleStr</a></li><li><a href="global.html#handleWhile">handleWhile</a></li><li><a href="global.html#printPostOrder">printPostOrder</a></li><li><a href="global.html#variableCount">variableCount</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Sun Nov 17 2024 15:41:39 GMT-0600 (Central Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
