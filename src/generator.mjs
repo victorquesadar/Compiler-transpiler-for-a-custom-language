@@ -177,14 +177,14 @@ function handleIdentifier(node) {
 
 function handleParameter(node) {
     
-    if (!variableCount[0]) {
-        variableCount[0] = { variableList: [] };
+    if (!variableCount[frameCount]) {
+        variableCount[frameCount] = { variableList: [] };
     }  
-    const existingIdentifier = variableCount[0].variableList.find(ident => ident.label === node.value.name) !== undefined;
+    const existingIdentifier = variableCount[frameCount].variableList.find(ident => ident.label === node.value.name) !== undefined;
     if (!existingIdentifier) {
         for (let i = 0; i < node.value; i++) {
-            const identy = new Identifier(variable[i], variable);
-            variableCount[0].variableList.push(identy);
+            const identy = new Identifier(node.children[i], variable);
+            variableCount[frameCount].variableList.push(identy);
             variable++;
             console.log('BST', 0, identy.value);    
         }
