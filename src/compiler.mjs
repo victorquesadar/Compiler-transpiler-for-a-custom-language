@@ -1,4 +1,15 @@
-
+/**
+ * @file
+ * Este archivo contiene la implementación de la función principal del compilador que utiliza ANTLR para analizar el código fuente,
+ * generar un árbol de sintaxis abstracta (AST) y luego recorrerlo en postorden para ejecutar las acciones correspondientes.
+ *
+ * @version 1.0.0
+ * @authors 
+ * - Victor Quesada Rodriguez
+ * - Esteban Mojica
+ * - Pablo Alvarez
+ * @date Última modificación: 2024-11-14
+ */
 import antlr4 from 'antlr4'
 
 import JavaScriptLexer  from '../parser/JavaScriptLexer.js'
@@ -12,6 +23,12 @@ import CustomErrorListener from './CustomErrorListener.mjs';
 
 import fs from 'fs'
 
+/**
+ * Compila el archivo especificado.
+ * 
+ * @param {string} filename - El nombre del archivo a compilar.
+ * @returns {Promise<void>} Una promesa que se resuelve cuando la compilación se completa.
+ */
 async function compile(filename) {
 	
   try{
