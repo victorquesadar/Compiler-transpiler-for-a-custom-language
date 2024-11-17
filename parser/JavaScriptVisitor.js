@@ -36,6 +36,12 @@ export default class JavaScriptVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
+	// Visit a parse tree produced by JavaScriptParser#functionLet.
+	visitFunctionLet(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 	// Visit a parse tree produced by JavaScriptParser#functionExpression.
 	visitFunctionExpression(ctx) {
 	  return this.visitChildren(ctx);
@@ -56,6 +62,12 @@ export default class JavaScriptVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by JavaScriptParser#printStatement.
 	visitPrintStatement(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by JavaScriptParser#returnStatement.
+	visitReturnStatement(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
@@ -102,14 +114,32 @@ export default class JavaScriptVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
-	// Visit a parse tree produced by JavaScriptParser#stringExpr.
-	visitStringExpr(ctx) {
+	// Visit a parse tree produced by JavaScriptParser#parens.
+	visitParens(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
 
-	// Visit a parse tree produced by JavaScriptParser#parens.
-	visitParens(ctx) {
+	// Visit a parse tree produced by JavaScriptParser#numberExpr.
+	visitNumberExpr(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by JavaScriptParser#callLis.
+	visitCallLis(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by JavaScriptParser#additiveExpr.
+	visitAdditiveExpr(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by JavaScriptParser#stringExpr.
+	visitStringExpr(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
@@ -128,18 +158,6 @@ export default class JavaScriptVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by JavaScriptParser#lambdaExpr.
 	visitLambdaExpr(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by JavaScriptParser#numberExpr.
-	visitNumberExpr(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by JavaScriptParser#additiveExpr.
-	visitAdditiveExpr(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
@@ -188,6 +206,12 @@ export default class JavaScriptVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by JavaScriptParser#callExpression.
 	visitCallExpression(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by JavaScriptParser#callList.
+	visitCallList(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

@@ -1,7 +1,7 @@
 grammar JavaScript;
 
 // Parser Rules
-program: statement*;
+program: statement* EOF;
 
 statement
     : declaration
@@ -13,9 +13,10 @@ statement
     | elseBlockStatement
     | ifThenElseStatement
     | ifThenStatement
-    
+    | returnStatement
     | whileStatement
-    
+    | functionLet
+    | callList                                        
     ;
 
 declaration
@@ -23,12 +24,18 @@ declaration
     | 'const' variableAssignment
     ;
 
+
+
 variableAssignment
     : IDENTIFIER '=' expression
     ;
 
 functionDeclaration
     : 'let' IDENTIFIER '=' functionExpression
+    ;
+
+functionLet
+    : 'let' blockStatement 'in' blockStatement
     ;
 
 functionExpression
@@ -44,7 +51,11 @@ expressionStatement
     ;
 
 printStatement
-    : 'print' '(' expression ')'
+    : 'print' '(' (expression (',' expression)*)? ')'
+    ;
+
+returnStatement
+    : 'return' '(' (expression (',' expression)*)? ')'
     ;
 
 blockStatement
@@ -72,7 +83,7 @@ ifThenStatement
     ;
 
 whileStatement
-    : 'while' '(' expression ')' blockStatement
+    : 'while' '(' expression ')' ifThenBlockStatement
     ;
 
 // Simplified expression rule with all operations in one place
@@ -89,6 +100,7 @@ expression
     | callExpression                                   # callExpr
     | lambdaExpression                                 # lambdaExpr
     | variableAssignment                                # variableAssig
+    | callList                                          # callLis
     ;
 
 lambdaExpression
@@ -100,7 +112,11 @@ listExpression
     ;
 
 callExpression
-    : IDENTIFIER '(' (expression (',' expression)*)? ')'
+    : IDENTIFIER '(' (expression (','? expression)*) ')'
+    ;
+
+callList
+    : IDENTIFIER '['(expression (',' expression)*)']'
     ;
 
 // Lexer Rules
