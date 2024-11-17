@@ -138,6 +138,10 @@ function handleNumber(node) {
 
 // Otros manejadores siguen el mismo patrón...
 
+/**
+ * Maneja la impresión de un nodo.
+ * @param {Object} node - Nodo que contiene la instrucción de impresión.
+ */
 function handlePrint(node) {
     console.log('PRN');
     if (node.value && node.value.children) {
@@ -145,6 +149,10 @@ function handlePrint(node) {
     }
 }
 
+/**
+ * Maneja la instrucción de retorno.
+ * @param {Object} node - Nodo que contiene la instrucción de retorno.
+ */
 function handleReturn(node) {
     console.log('RET');
     if (node.value && node.value.children) {
@@ -152,6 +160,10 @@ function handleReturn(node) {
     }
 }
 
+/**
+ * Maneja una lista de llamadas.
+ * @param {Object} node - Nodo que contiene la lista de llamadas.
+ */
 function handleCallList(node) {
     console.log('LTK');
     if (node.value && node.value.children) {
@@ -159,6 +171,10 @@ function handleCallList(node) {
     }
 }
 
+/**
+ * Maneja un identificador.
+ * @param {Object} node - Nodo que contiene el identificador.
+ */
 function handleIdentifier(node) {
     for (let i = variableCount.length - 1; i >= 0; i--) {
         const existingIdentifier = variableCount[i].variableList.find(ident => ident.label === node.value.name);
@@ -175,6 +191,10 @@ function handleIdentifier(node) {
    
 }
 
+/**
+ * Maneja un parámetro.
+ * @param {Object} node - Nodo que contiene el parámetro.
+ */
 function handleParameter(node) {
     
     if (!variableCount[frameCount]) {
@@ -194,6 +214,10 @@ function handleParameter(node) {
 
 }
 
+/**
+ * Maneja una declaración de variable (let).
+ * @param {Object} node - Nodo que contiene la declaración de variable.
+ */
 function handleLet(node) {
     if (!variableCount[0]) {
         variableCount[0] = { variableList: [] };
@@ -209,6 +233,10 @@ function handleLet(node) {
     }
 }
 
+/**
+ * Maneja una llamada a función.
+ * @param {Object} node - Nodo que contiene la llamada a función.
+ */
 function handleCall(node) {
     let existingIdentifier = variableCount.find(ident => ident.label === node.value.name);
     if (existingIdentifier) {
@@ -219,18 +247,34 @@ function handleCall(node) {
     }
 }
 
+/**
+ * Maneja un valor entero.
+ * @param {Object} node - Nodo que contiene el valor entero.
+ */
 function handleInt(node) {
     console.log('LDV', node.value);
 }
 
+/**
+ * Maneja un valor de cadena.
+ * @param {Object} node - Nodo que contiene el valor de cadena.
+ */
 function handleStr(node) {
     console.log('LDV', node.value);
 }
 
+/**
+ * Maneja una lista.
+ * @param {Object} node - Nodo que contiene la lista.
+ */
 function handleList(node) {
     console.log('LDV', node.value);
 }
 
+/**
+ * Maneja la comparación de un nodo.
+ * @param {Object} node - Nodo que contiene la comparación.
+ */
 function handleCompare(node) {
     if (node.isIf) {
         console.log(node.value);
@@ -238,16 +282,34 @@ function handleCompare(node) {
     }
 }
 
+/**
+ * Maneja una declaración de bloque.
+ * @param {Object} node - Nodo que contiene la declaración de bloque.
+ */
 function handleBlockStatement(node) {
     console.log('BT', node.weight);
 }
 
+/**
+ * Maneja un bucle while.
+ * @param {Object} node - Nodo que contiene el bucle while.
+ */
 function handleWhile(node) {
     console.log('BR', '-' + String(node.value));
 }
+
+/**
+ * Maneja una operación binaria.
+ * @param {Object} node - Nodo que contiene la operación binaria.
+ */
 function handleBinaryOper(node) {
     console.log(node.value);
 }
+
+/**
+ * Maneja el final de la ejecución.
+ * @param {Object} node - Nodo que indica el final de la ejecución.
+ */
 function handleEnd(node) {
     console.log('HLT');
 }
