@@ -70,11 +70,13 @@ class MyVisitor extends JavaScriptVisitor {
 	}
 
 	visitStringExpr(ctx) {
-		return new ASTNode("STR", ctx.STRING_LITERAL().getText(), 1);
+		return new ASTNode("STR", ctx.STRING_LITERAL().getText(),null, 1);
 	}
 
 	visitListExpression(ctx) {
-		return new ASTNode("LIST", ctx.getText());
+		const nodes=new ASTNode("LIST", ctx.getText());
+		nodes.weight=1;
+		return nodes;
 	}
 	visitIfThenElseStatement(ctx) {
 		const condition = this.visit(ctx.expression(0));
@@ -143,7 +145,7 @@ class MyVisitor extends JavaScriptVisitor {
   visitCallExpression(ctx) {
     const functionName = ctx.IDENTIFIER().getText();
     const args = ctx.expression().map(arg => this.visit(arg));
-    return new ASTNode("CALL", { name: functionName }, args);
+    return new ASTNode("CALL", { name: functionName }, args,2);
   }
 
   visitReturnStatement(ctx) {
@@ -154,7 +156,7 @@ class MyVisitor extends JavaScriptVisitor {
   visitCallList(ctx) {
 	const variable = ctx.IDENTIFIER().getText();
 	const args = ctx.expression().map(arg => this.visit(arg));
-	return new ASTNode("CALL_LIST", { name: variable }, args);
+	return new ASTNode("CALL_LIST", { name: variable }, args,1);
   }
 
 	visitCompareExpr(ctx) {

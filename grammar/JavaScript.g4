@@ -16,7 +16,9 @@ statement
     | returnStatement
     | whileStatement
     | functionLet
-    | callList                                        
+    | callList   
+    
+
     ;
 
 declaration
@@ -31,7 +33,7 @@ variableAssignment
     ;
 
 functionDeclaration
-    : 'let' IDENTIFIER '=' functionExpression
+    : 'let' IDENTIFIER '=' functionExpression | 'const' IDENTIFIER '=' functionExpression
     ;
 
 functionLet
@@ -96,27 +98,29 @@ expression
     | IDENTIFIER                                       # identifierExpr
     | NUMBER                                           # numberExpr
     | STRING_LITERAL                                   # stringExpr
+    | callList                                           # callLis
     | listExpression                                   # listExpr
     | callExpression                                   # callExpr
     | lambdaExpression                                 # lambdaExpr
     | variableAssignment                                # variableAssig
-    | callList                                          # callLis
+                                       
     ;
 
 lambdaExpression
     : 'let' IDENTIFIER '=' functionExpression
     ;
 
-listExpression
-    : '[' (expression (',' expression)*)? ']'
-    ;
 
 callExpression
-    : IDENTIFIER '(' (expression (','? expression)*) ')'
+    : IDENTIFIER '(' (expression (',' expression)*)? ')'
     ;
 
 callList
     : IDENTIFIER '['(expression (',' expression)*)']'
+    ;
+
+listExpression
+    : '[' (expression (',' expression)*)? ']'
     ;
 
 // Lexer Rules
